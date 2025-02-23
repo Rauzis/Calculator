@@ -11,28 +11,32 @@
 #     the value stored in memory returns to 0.
 
 class Calculator:
-    def __init__(self, total=int()):
-        self.total = total
+    def __init__(self, n1, n2):
+        self.n1 = n1
+        self.n2 = n2
+     #   self.current = current
 
     def __str__(self):
-        return f"{self.total}"
+        return f"{self.current}"
 
-    def add(self, n):
-        n = self.n + n
-        self.n = n
+    def add(self, n1, n2):
+        self.n = n1 + n2
 
-    def sub(self, n):
-        n = self.n - n
-        self.n = n
+    def sub(self, n1, n2):
+        self.n1 = n1
+        self.n2 = n2
+        self.n = n1 - n2
 
-    def multi(self, n):
-        n = self.n * n
-        self.n = n
+    def multi(self, n1, n2):
+        self.n = n1 * n2
 
-    def div(self, n):
-        n = self.n / n
-        self.n = n
+    def div(self, n1, n2):
+        self.n = n1 / n2
 
+    def root(self, n1, n2):
+        self.n = n1, n2
+        
+        #  memory
     @property
     def size(self, current=0):
         self.current = current
@@ -43,8 +47,10 @@ def main():
     n = input("")
     if "+" in n:
         n1, n2 = n.split("+")
-        print(int(n1)+int(n2))
-        
+        Calculator.add(n1, n2)
+    elif "-" in n:
+        n1, n2 = n.split("-")
+        Calculator.sub(n1, n2)
 
 if __name__ == "__main__":
     main()
