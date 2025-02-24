@@ -43,18 +43,21 @@ class Calculator:
     # take user inputs for math and print answers
 def main():
     n = input("").strip()
-    if "+" in n:
-        addition(n)
-    elif "-" in n:
-        subtract(n)
-    elif "*" in n:
-        multiply(n)
-    elif "/" in n:
-        divide(n)
-    elif "root" in n:
-        root(n)
-    else:
-        raise ValueError("Bad input")
+    while True:
+        
+        if "+" in n:
+            addition(n)
+            
+        elif "-" in n:
+            subtract(n)
+        elif "*" in n:
+            multiply(n)
+        elif "/" in n:
+            divide(n)
+        elif "root" in n:
+            root(n)
+        else:
+            raise ValueError("Bad input")
         
 def addition(n):
     num = []
