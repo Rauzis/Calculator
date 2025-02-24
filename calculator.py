@@ -32,7 +32,7 @@ class Calculator:
         self.current = self.n1 / self.n2
 
     def root(self):
-        self.current = self.n1, self.n2
+        self.current = self.n1 ** (1 / self.n2)
         
         #  memory
     @property
@@ -42,12 +42,13 @@ class Calculator:
 
     # take user inputs for math and print answers
 def main():
-    n = input("").strip()
+    print(3**4)
     while True:
-        
+        n = input("").strip()
+    
         if "+" in n:
             addition(n)
-            
+            continue
         elif "-" in n:
             subtract(n)
         elif "*" in n:
