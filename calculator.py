@@ -67,35 +67,39 @@ def addition(n):
 
 def subtract(n):
     num = []
+    n = n.split("-")
     for numbers in n:
-        n.split("-")
-        if numbers.isnumeric():
-            num.append(numbers)
-        Calculator.sub(num[0], num[1])
+        num.append(int(numbers))
+    calc = Calculator(num[0], num[1])
+    calc.sub()
+    print(calc)
         
 def multiply(n):
     num = []
+    n = n.split("*")
     for numbers in n:
-        n.split("*")
-        if numbers.isnumeric():
-            num.append(numbers)
-        Calculator.multi(num[0], num[1])
+        num.append(int(numbers))
+    calc = Calculator(num[0], num[1])
+    calc.multi()
+    print(calc)
         
 def divide(n):
     num = []
+    n = n.split("/")
     for numbers in n:
-        n.split("/")
-        if numbers.isnumeric():
-            num.append(numbers)
-        Calculator.div(num[0], num[1])
+        num.append(int(numbers))
+    calc = Calculator(num[0], num[1])
+    calc.div()
+    print(calc)
         
 def root(n):
     num = []
+    n = n.split("root")
     for numbers in n:
-        n.split("root")
-        if numbers.isnumeric():
-            num.append(numbers)
-        Calculator.root(num[0], num[1])
+        num.append(int(numbers))
+    calc = Calculator(num[0], num[1])
+    calc.root()
+    print(calc)
         
 
 if __name__ == "__main__":
