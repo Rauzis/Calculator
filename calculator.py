@@ -119,12 +119,12 @@ def main():
         )
         if "+" in n:
             addition(n, calc)
-        elif "-" in n:
-            subtract(n, calc)
         elif "*" in n:
             multiply(n, calc)
         elif "/" in n:
             divide(n, calc)
+        elif "-" in n:
+            subtract(n, calc)
         elif "root" in n:
             root(n, calc)
         elif "reset" in n:
@@ -145,32 +145,32 @@ def addition(n, calc):
 def subtract(n, calc):
     n = n.replace("-", "").strip()
     if n:
-        calc.n1 = float(n)
-        calc.sub()
+        n = float(n)
+        calc.sub(n)
         print(calc)
 
 
 def multiply(n, calc):
     n = n.replace("*", "").strip()
     if n:
-        calc.n1 = float(n)
-        calc.multi()
+        n = float(n)
+        calc.multi(n)
         print(calc)
 
 
 def divide(n, calc):
     n = n.replace("/", "").strip()
     if n:
-        calc.n1 = float(n)
-        calc.div()
+        n = float(n)
+        calc.div(n)
         print(calc)
 
 
 def root(n, calc):
     n = n.replace("root", "").strip()
     if n:
-        calc.n1 = float(n)
-        calc.root()
+        n = float(n)
+        calc.root(n)
         print(calc)
 
 
