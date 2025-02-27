@@ -41,7 +41,6 @@ class Calculator:
         """
         self.n1 = n1
         self.current = self.current + self.n1
-        return self.current
 
     def sub(self, n1):
         """Subtracts given value (n1) from current value.
