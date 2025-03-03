@@ -8,23 +8,21 @@ class Calculator:
         current (float): The current value of the calculator. Initialized by assigning value `Calculator(0)`.
         n1 (float): The first operand for the operation.
     """
-
-    def __init__(self, current):
+    def __init__(self, current=0):
         """
         Initializes the Calculator with an initial number.
+        
+        Initializes with 0 on invalid input.
 
         Args:
             current (float or int): The current value of the calculator.
         """
-        try:
-            if isinstance(current, (int, float)):
-                self.current = current
-            else:
-                self.current = 0
-                print("Invalid input, initialized with 0")
 
-        except EOFError:
-            exit
+        if isinstance(current, (int, float)):
+            self.current = current
+        else:
+            self.current = 0
+            print("Invalid input, initialized with 0")
 
     def __str__(self):
         """
@@ -33,10 +31,11 @@ class Calculator:
         Returns:
             str: The **current** value as a string.
         """
-        return f"{self.current}"
+        return f"{(self.current)}"
 
     def add(self, n1):
         """Adds given value (n1) to current value.
+            Catch non (int, float) inputs as error.
 
         Args:
             n1 (float or int): Value to add to current value.
@@ -44,18 +43,19 @@ class Calculator:
         Returns:
             current (float or int): Total current value after adding n1.
         """
+        
         try:
-            if isinstance(n1, (int, float)):
-                self.n1 = n1
+            if (float, int(n1)):
+                self.n1 = float(n1)
                 self.current = self.current + self.n1
-            else:
-                print("Invalid input")
-        except EOFError:
-            return self.current
+                return self.current
+        except ValueError:
+            print("Invalid input")
 
     def sub(self, n1):
         """Subtracts given value (n1) from current value.
-
+            Catch non (int, float) inputs as error.
+            
         Args:
             n1 (float or int): Value to subtract from current value.
 
@@ -63,17 +63,16 @@ class Calculator:
             current (float or int): Total current value after subtracting n1.
         """
         try:
-            if isinstance(n1, (int, float)):
-                self.n1 = n1
+            if (float, int(n1)):
+                self.n1 = int(n1)
                 self.current = self.current - self.n1
-            else:
-                print("Invalid input")
-        except EOFError:
-            return self.current
+                return self.current
+        except ValueError:
+            print("Invalid input")
 
     def multi(self, n1):
         """Multiplies current value  by given value (n1).
-
+            Catch non (int, float) inputs as error.
         Args:
             n1 (float or int): Value that multiplies current value.
 
@@ -81,17 +80,16 @@ class Calculator:
             current (float or int): Total current value after multiplying by n1.
         """
         try:
-            if isinstance(n1, (int, float)):
+            if (float, int(n1)):
                 self.n1 = n1
                 self.current = self.current * self.n1
-            else:
-                print("Invalid input")
-        except EOFError:
-            return self.current
+                return self.current
+        except ValueError:
+            print("Invalid input")
 
     def div(self, n1):
-        """Divides current value  by given value (n1).
-
+        """Divides current value  by given value (n1), can't be 0.
+            Catch non (int, float) inputs as error.
         Args:
             n1 (float or int): Value that divides current value.
 
@@ -102,17 +100,16 @@ class Calculator:
         try:
             if n1 == 0:
                 print("Can't divide by 0")
-            elif isinstance(n1, (int, float)):
-                self.n1 = n1
+            elif (float, int(n1)):
+                self.n1 = float(n1)
                 self.current = self.current / self.n1
-            else:
-                print("Invalid input")
-        except EOFError:
-            print(self.current)
+                return self.current
+        except ValueError:
+            print("Invalid input")
 
     def root(self, n1):
-        """Takes (n1) root from current value.
-
+        """Takes (n1) root from current value, current value can't be negative.
+            Catch non (int, float) inputs as error.
         Args:
             n1 (float or int): Value that takes n'th root from current value.
 
@@ -123,14 +120,14 @@ class Calculator:
         try:
             if self.current < 0:
                 print("Can't extract root from negative numbers")
-            elif isinstance(n1, (int, float)):
+            elif (int, float(n1)):
                 self.n1 = n1
                 self.current = self.current ** (1 / self.n1)
-            else:
-                print("Invalid input")
-        except EOFError:
-            print(self.current)
+                return self.current
+        except ValueError:
+            print("Invalid input")
 
     def reset(self):
         """Sets **current** value to zero"""
         self.current = 0
+        return self.current
