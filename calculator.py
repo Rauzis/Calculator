@@ -33,7 +33,7 @@ class Calculator:
         """
         return f"{(self.current)}"
 
-    def add(self, n1):
+    def add(self, n1=None):
         """Adds given value (n1) to current value.
             Catch non (int, float) inputs as error.
 
@@ -45,14 +45,16 @@ class Calculator:
         """
         
         try:
-            if (float, int(n1)):
+            if n1 == None:
+                self.current += self.current
+            elif (float, (n1)):
                 self.n1 = float(n1)
-                self.current = self.current + self.n1
-                return self.current
+                self.current += self.n1
+            return self.current
         except ValueError:
             print("Invalid input")
 
-    def sub(self, n1):
+    def sub(self, n1 = None):
         """Subtracts given value (n1) from current value.
             Catch non (int, float) inputs as error.
             
@@ -63,14 +65,16 @@ class Calculator:
             current (float or int): Total current value after subtracting n1.
         """
         try:
-            if (float, int(n1)):
-                self.n1 = int(n1)
-                self.current = self.current - self.n1
-                return self.current
+            if n1 == None:
+                self.current -= 0
+            elif (float, (n1)):
+                self.n1 = float(n1)
+                self.current -= self.n1
+            return self.current
         except ValueError:
             print("Invalid input")
 
-    def multi(self, n1):
+    def multi(self, n1 = None):
         """Multiplies current value  by given value (n1).
             Catch non (int, float) inputs as error.
         Args:
@@ -80,14 +84,16 @@ class Calculator:
             current (float or int): Total current value after multiplying by n1.
         """
         try:
-            if (float, int(n1)):
-                self.n1 = n1
-                self.current = self.current * self.n1
-                return self.current
+            if n1 == None:
+                self.current *= self.current
+            elif (float, (n1)):
+                self.n1 = float(n1)
+                self.current *= self.n1
+            return self.current
         except ValueError:
             print("Invalid input")
 
-    def div(self, n1):
+    def div(self, n1 = None):
         """Divides current value  by given value (n1), can't be 0.
             Catch non (int, float) inputs as error.
         Args:
@@ -100,14 +106,20 @@ class Calculator:
         try:
             if n1 == 0:
                 print("Can't divide by 0")
-            elif (float, int(n1)):
+            elif n1 == None:
+                if self.current !=0:
+                    self.current /= self.current
+                    return self.current
+                else:
+                    print("Can't divide by 0")
+            elif (float, (n1)):
                 self.n1 = float(n1)
-                self.current = self.current / self.n1
+                self.current /= self.n1
                 return self.current
         except ValueError:
             print("Invalid input")
 
-    def root(self, n1):
+    def root(self, n1=None):
         """Takes (n1) root from current value, current value can't be negative.
             Catch non (int, float) inputs as error.
         Args:
@@ -120,14 +132,25 @@ class Calculator:
         try:
             if self.current < 0:
                 print("Can't extract root from negative numbers")
+            elif n1 == None:
+                n1 = 2
+                self.current = self.current ** (1 / n1)
+                return self.current
+            elif n1 == 0:
+                print("Invalid input")
             elif (int, float(n1)):
-                self.n1 = n1
-                self.current = self.current ** (1 / self.n1)
+                self.current = self.current ** (1 / n1)
                 return self.current
         except ValueError:
             print("Invalid input")
 
-    def reset(self):
+    def reset(self, n1=None):
         """Sets **current** value to zero"""
-        self.current = 0
+        if n1 == None:
+            self.current = 0
+        else:
+            self.current = n1
+        return self.current
+
+    def memory(self):
         return self.current
