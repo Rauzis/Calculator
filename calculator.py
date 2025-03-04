@@ -8,10 +8,11 @@ class Calculator:
         current (float): The current value of the calculator. Initialized by assigning value `Calculator(0)`.
         n1 (float): The first operand for the operation.
     """
+
     def __init__(self, current=0):
         """
         Initializes the Calculator with an initial number.
-        
+
         Initializes with 0 on invalid input.
 
         Args:
@@ -34,16 +35,16 @@ class Calculator:
         return f"{(self.current)}"
 
     def add(self, n1=None):
-        """Adds given value (n1) to current value.
-            Catch non (int, float) inputs as error.
+        """Adds given value (n1) to current value. Defaults to current memory value if None.
+            Catch non (float) inputs as error.
 
         Args:
-            n1 (float or int): Value to add to current value.
+            n1 (float): Value to add to current value.
 
         Returns:
-            current (float or int): Total current value after adding n1.
+            current (float): Total current value after adding n1.
         """
-        
+
         try:
             if n1 == None:
                 self.current += self.current
@@ -54,15 +55,15 @@ class Calculator:
         except ValueError:
             print("Invalid input")
 
-    def sub(self, n1 = None):
-        """Subtracts given value (n1) from current value.
-            Catch non (int, float) inputs as error.
-            
+    def sub(self, n1=None):
+        """Subtracts given value (n1) from current value. Defaults to 0 if None.
+            Catch non (float) inputs as error.
+
         Args:
-            n1 (float or int): Value to subtract from current value.
+            n1 (float): Value to subtract from current value.
 
         Returns:
-            current (float or int): Total current value after subtracting n1.
+            current (float): Total current value after subtracting n1.
         """
         try:
             if n1 == None:
@@ -74,14 +75,14 @@ class Calculator:
         except ValueError:
             print("Invalid input")
 
-    def multi(self, n1 = None):
-        """Multiplies current value  by given value (n1).
-            Catch non (int, float) inputs as error.
+    def multi(self, n1=None):
+        """Multiplies current value  by given value (n1). Defaults to current memory value if None.
+            Catch non (float) inputs as error.
         Args:
-            n1 (float or int): Value that multiplies current value.
+            n1 (float): Value that multiplies current value.
 
         Returns:
-            current (float or int): Total current value after multiplying by n1.
+            current (float): Total current value after multiplying by n1.
         """
         try:
             if n1 == None:
@@ -93,21 +94,21 @@ class Calculator:
         except ValueError:
             print("Invalid input")
 
-    def div(self, n1 = None):
-        """Divides current value  by given value (n1), can't be 0.
-            Catch non (int, float) inputs as error.
+    def div(self, n1=None):
+        """Divides current value by given value (n1), can't be 0. Defaults to current memory value if None.
+            Catch non (float) inputs as error.
         Args:
-            n1 (float or int): Value that divides current value.
+            n1 (float): Value that divides current value.
 
         Returns:
-            current (float or int): Total current value after dividing by n1.
+            current (float): Total current value after dividing by n1.
         """
 
         try:
             if n1 == 0:
                 print("Can't divide by 0")
             elif n1 == None:
-                if self.current !=0:
+                if self.current != 0:
                     self.current /= self.current
                     return self.current
                 else:
@@ -120,13 +121,13 @@ class Calculator:
             print("Invalid input")
 
     def root(self, n1=None):
-        """Takes (n1) root from current value, current value can't be negative.
-            Catch non (int, float) inputs as error.
+        """Takes (n1) root from current value, current value can't be negative. (n1) defaults to 2 if None.
+            Catch non (float) inputs as error.
         Args:
-            n1 (float or int): Value that takes n'th root from current value.
+            n1 (float): Value that takes n'th root from current value.
 
         Returns:
-            current (float or int): Total current value after taking n1 root from current.
+            current (float): Total current value after taking n1 root from current.
         """
 
         try:
@@ -138,19 +139,30 @@ class Calculator:
                 return self.current
             elif n1 == 0:
                 print("Invalid input")
-            elif (int, float(n1)):
+            elif float(n1):
                 self.current = self.current ** (1 / n1)
                 return self.current
         except ValueError:
             print("Invalid input")
 
     def reset(self, n1=None):
-        """Sets **current** value to zero"""
-        if n1 == None:
-            self.current = 0
-        else:
-            self.current = n1
+        """Takes (n1) as custom memory reset value, defaults to 0 if None.
+            Catch non (float) inputs as error.
+        Args:
+            n1 (float or int): Value that takes n'th root from current value.
+
+        Returns:
+            current (float): Total current value after reset.
+        """
+        try:
+            if n1 == None:
+                self.current = 0
+            elif float(n1):
+                self.current = float(n1)
+        except ValueError:
+            print("Invalid input")
         return self.current
 
     def memory(self):
+        """Returns current memory value."""
         return self.current
