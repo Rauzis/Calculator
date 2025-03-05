@@ -4,12 +4,13 @@ A simple calculator to perform basic arithmetic operations.
 
 ## Description
 
-Set initial value Calculator(n), default 0 if None.<br>
 Performs addition, subtraction, multiplication, division and root extraction
 
 ### Installing
 
-pip install git+https://github.com/Rauzis/Calculator.git
+Place calculator.py in folder it will be used in. <br>
+Start it by importing ```from calculator import Calculator```<br>
+Set initial value Calculator(n), default 0 if None.
 
 ### Classifiers
 
