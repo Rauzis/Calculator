@@ -149,7 +149,7 @@ class Calculator:
         """Takes (n1) as custom memory reset value, defaults to 0 if None.
             Catch non (float) inputs as error.
         Args:
-            n1 (float or int): Value that takes n'th root from current value.
+            n1 (float): Value that takes n root from current value.
 
         Returns:
             current (float): Total current value after reset.
